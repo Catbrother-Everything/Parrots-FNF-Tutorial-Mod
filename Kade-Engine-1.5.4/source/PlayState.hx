@@ -2521,12 +2521,28 @@ class PlayState extends MusicBeatState
 						{
 							case 2:
 								dad.playAnim('singUP' + altAnim, true);
+								if(SONG.player2 == 'senpai')
+								{
+									health -= 0.01;
+								}
 							case 3:
 								dad.playAnim('singRIGHT' + altAnim, true);
+								if(SONG.player2 == 'senpai')
+								{
+									health -= 0.01;
+								}
 							case 1:
 								dad.playAnim('singDOWN' + altAnim, true);
+								if(SONG.player2 == 'senpai')
+								{
+									health -= 0.01;
+								}
 							case 0:
 								dad.playAnim('singLEFT' + altAnim, true);
+								if(SONG.player2 == 'senpai')
+								{
+									health -= 0.01;
+								}
 						}
 						
 						if (FlxG.save.data.cpuStrums)
@@ -2618,7 +2634,7 @@ class PlayState extends MusicBeatState
 							}
 		
 							daNote.visible = false;
-							daNote.kill();
+							daNote.kill();1;
 							notes.remove(daNote, true);
 						}
 					
