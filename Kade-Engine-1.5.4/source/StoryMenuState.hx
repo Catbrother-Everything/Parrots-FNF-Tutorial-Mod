@@ -60,6 +60,7 @@ class StoryMenuState extends MusicBeatState
 	var txtWeekTitle:FlxText;
 
 	var curWeek:Int = 0;
+	var weekSprites:FlxSprite;
 
 	var txtTracklist:FlxText;
 
@@ -146,6 +147,16 @@ class StoryMenuState extends MusicBeatState
 
 		trace("Line 96");
 
+		weekSprites =  new FlxSprite(yellowBG.x, yellowBG.y).loadGraphic(Paths.image('WeeksImage'), true, 1280, 400);
+		weekSprites.animation.add('week0', [0], 0, false);
+		weekSprites.animation.add('week1', [1], 0, false);
+		weekSprites.animation.add('week2', [2], 0, false);
+		weekSprites.animation.add('week3', [3], 0, false);
+		weekSprites.animation.add('week4', [4], 0, false);
+		weekSprites.animation.add('week5', [5], 0, false);
+		weekSprites.animation.add('week6', [0], 0, false);
+		weekSprites.antialiasing = true;
+
 		grpWeekCharacters.add(new MenuCharacter(0, 100, 0.5, false));
 		grpWeekCharacters.add(new MenuCharacter(450, 25, 0.9, true));
 		grpWeekCharacters.add(new MenuCharacter(850, 100, 0.5, true));
@@ -183,6 +194,7 @@ class StoryMenuState extends MusicBeatState
 
 		add(yellowBG);
 		add(grpWeekCharacters);
+		add(weekSprites);
 
 		txtTracklist = new FlxText(FlxG.width * 0.05, yellowBG.x + yellowBG.height + 100, 0, "Tracks", 32);
 		txtTracklist.alignment = CENTER;
@@ -392,6 +404,7 @@ class StoryMenuState extends MusicBeatState
 			curWeek = 0;
 		if (curWeek < 0)
 			curWeek = weekData.length - 1;
+		weekSprites.animation.play('week' + curWeek);
 
 		var bullShit:Int = 0;
 
